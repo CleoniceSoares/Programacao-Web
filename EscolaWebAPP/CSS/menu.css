@@ -1,0 +1,8 @@
+.navegation{
+  list-style: none;
+  margin: 0;
+  background: deepskyblue;
+  /*Flex para o parent*/
+  display: flex;
+  flex-direction: row-reverse;
+}
