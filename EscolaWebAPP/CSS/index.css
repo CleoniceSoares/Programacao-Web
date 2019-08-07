@@ -2,17 +2,18 @@
   margin: 0;
   padding: 0;
 }
-.container{
+.meu-container{
+  padding: 0;
   border: 1px solid red;
   width: 80%;
-  height: 100%;
   margin: 0 auto;
+  min-height: 100vh;
   /* Flex*/
   display: flex;
   flex-direction: column;
 }
 header{
-  background-color: #B0C4DE;
+  background-color: #B0C4DE
 }
 main{
   background-color: #FFC0CB;
