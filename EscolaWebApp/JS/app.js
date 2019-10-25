@@ -8,7 +8,7 @@ let app = angular.module(nomeApp, modulos);
 let homeController = function($scope) {
   $scope.nome = "";
 
-  $scope.desejarBoasVindas = function($scope) {
+  $scope.desejarBoasVindas = function() {
     let nome = $scope.nome;
     $scope.mensagem = "Olá, " + nome;
   }
