@@ -38,24 +38,45 @@
           </ul>
         </nav>
       </header>
-      <main>
+      <main ng-controller="EscolaController" class="forms">
         <p>
           <b> <u>Cadastrar Escola</u> </b>
         </p>
-        <form action="http://localhost:5000/form_escola" method='POST'>
+        <form name="escolaForm">
           <div class="form-group">
             <label for= 'Nome'> Nome:</label>
-            <input type= 'text' name= 'Nome' class="form-control">
+            <input type= 'text' ng-model="escola.nome" name= 'nome' class="form-control" ng-required="true" placeholder="Nome" ng-minlength="3" ng-maxlength="25">
+            <div>
+              <div ng-show="escolaForm.nome.$error.required && escolaForm.nome.$dirty" class="alert alert-danger">
+                Por favor, preencha o campo Nome!
+              </div>
+              <div ng-show="escolaForm.nome.$error.minlength" class="alert alert-info">
+                Atenção, o campo Nome deve ter o tamanho mínimo de 3 caracteres!
+              </div>
+              <div ng-show="escolaForm.nome.$error.maxlength" class="alert alert-info">
+                Atenção, o campo Nome deve ter o tamanho máximo de 25 caracteres!
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for= 'fk_id_endereco'> FK_Endereço:</label>
-            <input type= 'text' name= 'fk_id_endereco' class="form-control">
+            <input type= 'text' ng-model= 'escola.fk_id_endereco' name="fk_id_endereco" class="form-control" ng-required="true" placeholder="FK_Endereço">
+            <div>
+              <div ng-show="escolaForm.fk_id_endereco.$error.required && escolaForm.fk_id_endereco.$dirty" class="alert alert-danger">
+                Por favor, preencha o campo FK_Endereço!
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for= 'fk_id_campus'> FK_Campus:</label>
-            <input type= 'text' name= 'fk_id_campus' class="form-control">
+            <input type= 'text' ng-model="escola.campus" name= 'fk_id_campus' class="form-control" ng-required="true" placeholder="FK_Campus">
+            <div>
+              <div ng-show="escolaForm.fk_id_campus.$error.required && escolaForm.fk_id_endereco.$dirty" class="alert alert-danger">
+                Por favor, preencha o campo FK_Campus!
+              </div>
+            </div>
           </div>
-          <input type= 'submit' name='cadastrar' value= 'Cadastrar' class="btn btn-primary btn-lg btn-block">
+          <button ng-click="cadastrar()" class="btn btn-dark btn-lg btn-block" ng-disabled="escolaForm.$invalid">Cadastrar</button>
         </form>
       </main>
       <footer>

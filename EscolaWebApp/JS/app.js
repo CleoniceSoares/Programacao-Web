@@ -1,10 +1,11 @@
 // Inicializar o módulo.
 let nomeApp = 'EscolaWebApp'
 let modulos = []
-var app = angular.module(nomeApp, modulos);
+let app = angular.module(nomeApp, modulos);
 
 // Estrutura básica para uma função no controlador.
-var homeController = function($scope) {
+// Controller home
+let homeController = function($scope) {
   $scope.nome = "";
 
   $scope.desejarBoasVindas = function($scope) {
@@ -15,43 +16,41 @@ var homeController = function($scope) {
 
 app.controller('HomeController', homeController);
 
-let alunoController = function($scope) {
-    $scope.nome = "";
-    $scope.matricula = "";
-    $scope.cpf = "";
-    $scope.nascimento = "";
-    $scope.fk_id_endereco = 0;
-    $scope.fk_id_curso = 0;
+// Controller aluno
+let alunoController = function($scope, alunoApi) {
 
-    $scope.cadastrar = function() {
-      alunoApi.cadastrar($scope.aluno)
-        .then(function(response) {})
-        .catch(function(error) {});
-      $scope.formAluno.$setPristine();
-    }
+  $scope.aluno = {};
+
+  $scope.cadastrar = function() {
+    alunoApi.cadastrar($scope.aluno)
+      .then(function(response) {
+      })
+      .catch(function(error) {
+      });
+  }
 }
 
-app.controller("AlunoController", alunoController);
+app.controller('AlunoController', alunoController);
 
 // Aluno - Factory
-var alunoFactory = function($http) {
+let alunoFactory = function($http) {
 
-  var baseUrl = "localhost:5000";
-  var path = baseUrl + "/aluno";
+  let baseUrl = "localhost:5000";
+  let path = baseUrl + "/aluno";
 
-  var _cadastrar = function(aluno) {
-    return $http.post(_path, aluno)
+  let _cadastrar = function(aluno) {
+    return $http.post(path, aluno)
   };
 
-  var _atualizar = function(aluno) {
-    return $http.put(_path, aluno)
+  let _atualizar = function(aluno) {
+    return $http.put(path, aluno)
   };
 
-  var _buscarPorId = function(id) {
+  let _buscarPorId = function(id) {
     return $http.get(_path + "/" + encodeURI(id))
   };
 
-  var _listar = function() {
+  let _listar = function() {
     return $http.get(_path)
   };
 
@@ -65,9 +64,9 @@ var alunoFactory = function($http) {
 
 app.factory("alunoApi", alunoFactory);
 
-let cursoController = function($scope) {
-    $scope.nome = "";
-    $scope.fk_id_turno = 0;
+// Controller curso
+let cursoController = function($scope, cursoApi) {
+    $scope.curso = {};
 
     $scope.cadastrar = function() {
       cursoApi.cadastrar($scope.curso)
@@ -80,24 +79,24 @@ let cursoController = function($scope) {
 app.controller("CursoController", cursoController);
 
 // Curso - Factory
-var cursoFactory = function($http) {
+let cursoFactory = function($http) {
 
-  var baseUrl = "localhost:5000";
-  var path = baseUrl + "/curso";
+  let baseUrl = "localhost:5000";
+  let path = baseUrl + "/curso";
 
-  var _cadastrar = function(curso) {
+  let _cadastrar = function(curso) {
     return $http.post(_path, curso)
   };
 
-  var _atualizar = function(curso) {
+  let _atualizar = function(curso) {
     return $http.put(_path, curso)
   };
 
-  var _buscarPorId = function(id) {
+  let _buscarPorId = function(id) {
     return $http.get(_path + "/" + encodeURI(id))
   };
 
-  var _listar = function() {
+  let _listar = function() {
     return $http.get(_path)
   };
 
@@ -111,9 +110,9 @@ var cursoFactory = function($http) {
 
 app.factory("cursoApi", cursoFactory);
 
-let disciplinaController = function($scope){
-    $scope.nome = "";
-    $scope.fk_id_professor = 0;
+// Controller disciplina
+let disciplinaController = function($scope, disciplinaApi){
+    $scope.disciplina = {};
 
     $scope.cadastrar = function() {
       disciplinaApi.cadastrar($scope.disciplina)
@@ -126,24 +125,24 @@ let disciplinaController = function($scope){
 app.controller("DisciplinaController", disciplinaController);
 
 // Disciplina - Factory
-var disciplinaFactory = function($http) {
+let disciplinaFactory = function($http) {
 
-  var baseUrl = "localhost:5000";
-  var path = baseUrl + "/disciplina";
+  let baseUrl = "localhost:5000";
+  let path = baseUrl + "/disciplina";
 
-  var _cadastrar = function(disciplina) {
+  let _cadastrar = function(disciplina) {
     return $http.post(_path, disciplina)
   };
 
-  var _atualizar = function(disciplina) {
+  let _atualizar = function(disciplina) {
     return $http.put(_path, disciplina)
   };
 
-  var _buscarPorId = function(id) {
+  let _buscarPorId = function(id) {
     return $http.get(_path + "/" + encodeURI(id))
   };
 
-  var _listar = function() {
+  let _listar = function() {
     return $http.get(_path)
   };
 
@@ -157,9 +156,9 @@ var disciplinaFactory = function($http) {
 
 app.factory("disciplinaApi", disciplinaFactory);
 
-let turmaController = function($scope) {
-    $scope.nome = "";
-    $scope.fk_id_endereco = 0;
+// Controller turma
+let turmaController = function($scope, turmaApi) {
+    $scope.turma = {};
 
     $scope.cadastrar = function() {
       turmaApi.cadastrar($scope.turma)
@@ -172,24 +171,24 @@ let turmaController = function($scope) {
 app.controller("TurmaController", turmaController);
 
 // Turma - Factory
-var turmaFactory = function($http) {
+let turmaFactory = function($http) {
 
-  var baseUrl = "localhost:5000";
-  var path = baseUrl + "/turma";
+  let baseUrl = "localhost:5000";
+  let path = baseUrl + "/turma";
 
-  var _cadastrar = function(turma) {
+  let _cadastrar = function(turma) {
     return $http.post(_path, turma)
   };
 
-  var _atualizar = function(turma) {
+  let _atualizar = function(turma) {
     return $http.put(_path, turma)
   };
 
-  var _buscarPorId = function(id) {
+  let _buscarPorId = function(id) {
     return $http.get(_path + "/" + encodeURI(id))
   };
 
-  var _listar = function() {
+  let _listar = function() {
     return $http.get(_path)
   };
 
@@ -203,12 +202,9 @@ var turmaFactory = function($http) {
 
 app.factory("turmaApi", turmaFactory);
 
-let enderecoController = function($scope) {
-    $scope.logradouro = "";
-    $scope.complemento = "";
-    $scope.bairro = "";
-    $scope.cep = "";
-    $scope.numero = 0;
+// Controller endereço
+let enderecoController = function($scope, enderecoApi) {
+    $scope.endereco = {};
 
     $scope.cadastrar = function() {
       enderecoApi.cadastrar($scope.endereco)
@@ -221,24 +217,24 @@ let enderecoController = function($scope) {
 app.controller("EnderecoController", enderecoController);
 
 // Endereço - Factory
-var enderecoFactory = function($http) {
+let enderecoFactory = function($http) {
 
-  var baseUrl = "localhost:5000";
-  var path = baseUrl + "/endereco";
+  let baseUrl = "localhost:5000";
+  let path = baseUrl + "/endereco";
 
-  var _cadastrar = function(endereco) {
+  let _cadastrar = function(endereco) {
     return $http.post(_path, endereco)
   };
 
-  var _atualizar = function(endereco) {
+  let _atualizar = function(endereco) {
     return $http.put(_path, endereco)
   };
 
-  var _buscarPorId = function(id) {
+  let _buscarPorId = function(id) {
     return $http.get(_path + "/" + encodeURI(id))
   };
 
-  var _listar = function() {
+  let _listar = function() {
     return $http.get(_path)
   };
 
@@ -251,11 +247,9 @@ var enderecoFactory = function($http) {
 }
 
 app.factory("enderecoApi", enderecoFactory);
-
-let escolaController = function($scope) {
-    $scope.nome = "";
-    $scope.fk_id_endereco = 0;
-    $scope.fk_id_campus = 0;
+// Controller escola
+let escolaController = function($scope, escolaApi) {
+    $scope.escola = {};
 
     $scope.cadastrar = function() {
       escolaApi.cadastrar($scope.escola)
@@ -268,24 +262,24 @@ let escolaController = function($scope) {
 app.controller("EscolaController", escolaController);
 
 // Escola - Factory
-var escolaFactory = function($http) {
+let escolaFactory = function($http) {
 
-  var baseUrl = "localhost:5000";
-  var path = baseUrl + "/escola";
+  let baseUrl = "localhost:5000";
+  let path = baseUrl + "/escola";
 
-  var _cadastrar = function(escola) {
+  let _cadastrar = function(escola) {
     return $http.post(_path, escola)
   };
 
-  var _atualizar = function(escola) {
+  let _atualizar = function(escola) {
     return $http.put(_path, escola)
   };
 
-  var _buscarPorId = function(id) {
+  let _buscarPorId = function(id) {
     return $http.get(_path + "/" + encodeURI(id))
   };
 
-  var _listar = function() {
+  let _listar = function() {
     return $http.get(_path)
   };
 
@@ -299,39 +293,39 @@ var escolaFactory = function($http) {
 
 app.factory("escolaApi", escolaFactory);
 
-let campusController = function($scope) {
-    $scope.sigla = "";
-    $scope.cidade = "";
+// Controller campus
+let campusController = function($scope, campusApi) {
+    $scope.campus = {};
 
     $scope.cadastrar = function() {
       campusApi.cadastrar($scope.campus)
         .then(function(response) {})
         .catch(function(error) {});
-      $scope.ampusForm.$setPristine();
+      $scope.campusForm.$setPristine();
     }
 }
 
 app.controller("CampusController", campusController);
 
 // Campus - Factory
-var campusFactory = function($http) {
+let campusFactory = function($http) {
 
-  var baseUrl = "localhost:5000";
-  var path = baseUrl + "/campus";
+  let baseUrl = "localhost:5000";
+  let path = baseUrl + "/campus";
 
-  var _cadastrar = function(campus) {
+  let _cadastrar = function(campus) {
     return $http.post(_path, campus)
   };
 
-  var _atualizar = function(campus) {
+  let _atualizar = function(campus) {
     return $http.put(_path, campus)
   };
 
-  var _buscarPorId = function(id) {
+  let _buscarPorId = function(id) {
     return $http.get(_path + "/" + encodeURI(id))
   };
 
-  var _listar = function() {
+  let _listar = function() {
     return $http.get(_path)
   };
 
@@ -345,9 +339,9 @@ var campusFactory = function($http) {
 
 app.factory("campusApi", campusFactory);
 
-let professorController = function($scope) {
-    $scope.nome = "";
-    $scope.fk_id_endereco = 0;
+// Controller professor
+let professorController = function($scope, professorApi) {
+    $scope.professor = {};
 
     $scope.cadastrar = function() {
       professorApi.cadastrar($scope.professor)
@@ -360,24 +354,24 @@ let professorController = function($scope) {
 app.controller("ProfessorController", professorController);
 
 // Professor - Factory
-var professorFactory = function($http) {
+let professorFactory = function($http) {
 
-  var baseUrl = "localhost:5000";
-  var path = baseUrl + "/professor";
+  let baseUrl = "localhost:5000";
+  let path = baseUrl + "/professor";
 
-  var _cadastrar = function(professor) {
+  let _cadastrar = function(professor) {
     return $http.post(_path, professor)
   };
 
-  var _atualizar = function(professor) {
+  let _atualizar = function(professor) {
     return $http.put(_path, professor)
   };
 
-  var _buscarPorId = function(id) {
+  let _buscarPorId = function(id) {
     return $http.get(_path + "/" + encodeURI(id))
   };
 
-  var _listar = function() {
+  let _listar = function() {
     return $http.get(_path)
   };
 
@@ -391,8 +385,9 @@ var professorFactory = function($http) {
 
 app.factory("professorApi", professorFactory);
 
-let turnoController = function($scope) {
-    $scope.nome = "";
+// Controller turno
+let turnoController = function($scope, turnoApi) {
+    $scope.turno = {};
 
     $scope.cadastrar = function() {
       turnoApi.cadastrar($scope.turno)
@@ -405,24 +400,24 @@ let turnoController = function($scope) {
 app.controller("TurnoController", turnoController);
 
 // Turno - Factory
-var turnoFactory = function($http) {
+let turnoFactory = function($http) {
 
-  var baseUrl = "localhost:5000";
-  var path = baseUrl + "/turno";
+  let baseUrl = "localhost:5000";
+  let path = baseUrl + "/turno";
 
-  var _cadastrar = function(turno) {
+  let _cadastrar = function(turno) {
     return $http.post(_path, turno)
   };
 
-  var _atualizar = function(aluno) {
+  let _atualizar = function(aluno) {
     return $http.put(_path, turno)
   };
 
-  var _buscarPorId = function(id) {
+  let _buscarPorId = function(id) {
     return $http.get(_path + "/" + encodeURI(id))
   };
 
-  var _listar = function() {
+  let _listar = function() {
     return $http.get(_path)
   };
 

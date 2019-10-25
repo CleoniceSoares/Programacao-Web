@@ -38,20 +38,36 @@
           </ul>
         </nav>
       </header>
-      <main>
+      <main ng-controller="CursoController" class="forms">
         <p>
           <b> <u>Cadastrar Curso</u> </b>
         </p>
-        <form action="http://localhost:5000/form_curso" method='POST'>
+        <form name="cursoForm">
           <div class="form-group">
             <label for= 'Nome'> Nome:</label>
-            <input type= 'text' name= 'Nome'class="form-control">
+            <input type= 'text' ng-model="curso.nome" name= 'nome'class="form-control" ng-required="true" placeholder="Nome" ng-minlength="3" ng-maxlength="25">
+            <div>
+              <div ng-show="cursoForm.nome.$error.required && cursoForm.nome.$dirty" class="alert alert-danger">
+                Por favor, preencha o campo Nome!
+              </div>
+              <div ng-show="cursoForm.nome.$error.minlength" class="alert alert-info">
+                Atenção, o campo Nome deve ter o tamanho mínimo de 3 caracteres!
+              </div>
+              <div ng-show="cursoForm.nome.$error.maxlength" class="alert alert-info">
+                Atenção, o campo Nome deve ter o tamanho máximo de 25 caracteres!
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for= 'fk_id_turno'> FK_Turno:</label>
-            <input type= 'text' name= 'fk_id_turno' class="form-control">
+            <input type= 'text' ng-model="curso.fk_id_turno" name= 'fk_id_turno' class="form-control" ng-required="true" placeholder="FK_Turno">
+            <div>
+              <div ng-show="cursoForm.fk_id_turno.$error.required && cursoForm.fk_id_turno.$dirty" class="alert alert-danger">
+                Por favor, preencha o campo FK_Turno!
+              </div>
+            </div>
           </div>
-          <input type= 'submit' name='cadastrar' value= 'Cadastrar' class="btn btn-primary btn-lg btn-block">
+          <button ng-click="cadastrar()" class="btn btn-dark btn-lg btn-block" ng-disabled="cursoForm.$invalid">Cadastrar</button>
         </form>
       </main>
       <footer>

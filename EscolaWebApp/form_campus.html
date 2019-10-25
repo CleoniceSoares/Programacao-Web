@@ -38,20 +38,42 @@
           </ul>
         </nav>
       </header>
-      <main g-controller="CampusController" class="forms">
+      <main ng-controller="CampusController" class="forms">
         <p>
           <b> <u>Cadastrar Campus</u> </b>
         </p>
         <form name="campusForm">
           <div class="form-group">
             <label for= 'Sigla'> Sigla:</label>
-            <input type= 'text' name= 'Sigla' class="form-control">
+            <input type= 'text' ng-model="campus.nome" name= 'sigla' class="form-control" ng-required="true" placeholder="Sigla" ng-minlength="3" ng-maxlength="25">
+            <div>
+              <div ng-show="campusForm.sigla.$error.required && campusForm.sigla.$dirty" class="alert alert-danger">
+                Por favor, preencha o campo Sigla!
+              </div>
+              <div ng-show="campusForm.sigla.$error.minlength" class="alert alert-info">
+                Atenção, o campo Sigla deve ter o tamanho mínimo de 3 caracteres!
+              </div>
+              <div ng-show="campusForm.sigla.$error.maxlength" class="alert alert-info">
+                Atenção, o campo Sigla deve ter o tamanho máximo de 25 caracteres!
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for= 'Cidade'> Cidade:</label>
-            <input type= 'text' name= 'Cidade' class="form-control">
+            <input type= 'text' ng-model="campus.cidade" name= 'cidade' class="form-control" ng-required="true" placeholder="Cidade" ng-minlength="3" ng-maxlength="25">
+            <div>
+              <div ng-show="campusForm.cidade.$error.required && campusForm.cidade.$dirty" class="alert alert-danger">
+                Por favor, preencha o campo Cidade!
+              </div>
+              <div ng-show="campusForm.cidade.$error.minlength" class="alert alert-info">
+                Atenção, o campo Cidade deve ter o tamanho mínimo de 3 caracteres!
+              </div>
+              <div ng-show="campusForm.cidade.$error.maxlength" class="alert alert-info">
+                Atenção, o campo Cidade deve ter o tamanho máximo de 25 caracteres!
+              </div>
+            </div>
           </div>
-          <input type= 'submit' name='cadastrar' value= 'Cadastrar' class="btn btn-primary btn-lg btn-block">
+          <button ng-click="cadastrar()" class="btn btn-dark btn-lg btn-block" ng-disabled="campusForm.$invalid">Cadastrar</button>
         </form>
       </main>
       <footer>
