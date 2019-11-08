@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app="EscolaWebApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Cadastrar Campus</title>
+    <link rel="stylesheet" type="text/css" href="CSS/index.css">
+    <link rel="stylesheet" type="text/css" href="CSS/menu.css">
+    <!-- AngularJS -->
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js" type="text/javascript"></script>
+    <!-- Angular Material -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- EscolaWebApp - Aplicando Angular-->
+    <script src="JS/app.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="meu-container">
+      <header>
+        <!-- Logo -->
+        <a href="index.html">
+          <div id="logo">
+              <img src="Imagem/logo.png" />
+          </div>
+        </a>
+        <nav>
+          <ul class="navigation">
+            <li><a href="form_turno.html"><b>Turno</b></a></li>
+            <li><a href="form_turma.html"><b>Turma</b></a></li>
+            <li><a href="form_professor.html"><b>Professor</b></a></li>
+            <li><a href="form_escola.html"><b>Escola</b></a></li>
+            <li><a href="form_endereco.html"><b>Endereço</b></a></li>
+            <li><a href="form_disciplina.html"><b>Disciplina</b></a></li>
+            <li><a href="form_curso.html"><b>Curso</b></a></li>
+            <li><a href="form_campus.html"><b>Campus</b></a></li>
+            <li><a href="form_aluno.html"><b>Aluno</b></a></li>
+          </ul>
+        </nav>
+      </header>
+      <main ng-controller="CampusController" class="forms">
+        <p>
+          <b> <u>Cadastrar Campus</u> </b>
+        </p>
+        <form name="campusForm">
+          <div class="form-group">
+            <label for= 'Sigla'> Sigla:</label>
+            <input type= 'text' ng-model="campus.nome" name= 'sigla' class="form-control" ng-required="true" placeholder="Sigla" ng-minlength="3" ng-maxlength="25">
+            <div>
+              <div ng-show="campusForm.sigla.$error.required && campusForm.sigla.$dirty" class="alert alert-danger">
+                Por favor, preencha o campo Sigla!
+              </div>
+              <div ng-show="campusForm.sigla.$error.minlength" class="alert alert-info">
+                Atenção, o campo Sigla deve ter o tamanho mínimo de 3 caracteres!
+              </div>
+              <div ng-show="campusForm.sigla.$error.maxlength" class="alert alert-info">
+                Atenção, o campo Sigla deve ter o tamanho máximo de 25 caracteres!
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for= 'Cidade'> Cidade:</label>
+            <input type= 'text' ng-model="campus.cidade" name= 'cidade' class="form-control" ng-required="true" placeholder="Cidade" ng-minlength="3" ng-maxlength="25">
+            <div>
+              <div ng-show="campusForm.cidade.$error.required && campusForm.cidade.$dirty" class="alert alert-danger">
+                Por favor, preencha o campo Cidade!
+              </div>
+              <div ng-show="campusForm.cidade.$error.minlength" class="alert alert-info">
+                Atenção, o campo Cidade deve ter o tamanho mínimo de 3 caracteres!
+              </div>
+              <div ng-show="campusForm.cidade.$error.maxlength" class="alert alert-info">
+                Atenção, o campo Cidade deve ter o tamanho máximo de 25 caracteres!
+              </div>
+            </div>
+          </div>
+          <button ng-click="cadastrar()" class="btn btn-dark btn-lg btn-block" ng-disabled="campusForm.$invalid">Cadastrar</button>
+        </form>
+      </main>
+      <footer>
+        <div id="ifpb">
+            <img src="Imagem/ifpb.png" />
+        </div>
+        Copyright © Todos os direitos reservados.
+      </footer>
+    </div>
+  </body>
+</html>

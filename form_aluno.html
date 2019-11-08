@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html ng-app="EscolaWebApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Cadastrar Aluno</title>
+    <link rel="stylesheet" type="text/css" href="CSS/index.css">
+    <link rel="stylesheet" type="text/css" href="CSS/menu.css">
+    <!-- AngularJS -->
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js" type="text/javascript"></script>
+    <!-- Angular Material -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- EscolaWebApp - Aplicando Angular-->
+    <script src="JS/app.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="meu-container">
+      <header>
+        <!-- Logo -->
+        <a href="index.html">
+          <div id="logo">
+              <img src="Imagem/logo.png" />
+          </div>
+        </a>
+        <nav>
+          <ul class="navigation">
+            <li><a href="form_turno.html"><b>Turno</b></a></li>
+            <li><a href="form_turma.html"><b>Turma</b></a></li>
+            <li><a href="form_professor.html"><b>Professor</b></a></li>
+            <li><a href="form_escola.html"><b>Escola</b></a></li>
+            <li><a href="form_endereco.html"><b>Endereço</b></a></li>
+            <li><a href="form_disciplina.html"><b>Disciplina</b></a></li>
+            <li><a href="form_curso.html"><b>Curso</b></a></li>
+            <li><a href="form_campus.html"><b>Campus</b></a></li>
+            <li><a href="form_aluno.html"><b>Aluno</b></a></li>
+          </ul>
+        </nav>
+      </header>
+      <main ng-controller="AlunoController" class="forms">
+        <p>
+          <b> <u>Cadastrar Aluno</u> </b>
+        </p>
+        <form name="alunoForm">
+          <!-- Nome-->
+          <div class="form-group">
+            <label for= 'Nome'> Nome:</label>
+            <input type= 'text' ng-model="aluno.nome" name="nome" class="form-control" ng-required="true" placeholder="Nome" ng-minlength="3" ng-maxlength="25">
+            <div>
+              <div ng-show="alunoForm.nome.$error.required && alunoForm.nome.$dirty" class="alert alert-danger">
+                Por favor, preencha o campo Nome!
+              </div>
+              <div ng-show="alunoForm.nome.$error.minlength" class="alert alert-info">
+                Atenção, o campo Nome deve ter o tamanho mínimo de 3 caracteres!
+              </div>
+              <div ng-show="alunoForm.nome.$error.maxlength" class="alert alert-info">
+                Atenção, o campo Nome deve ter o tamanho máximo de 25 caracteres!
+              </div>
+            </div>
+          </div>
+          <!-- Matricula-->
+          <div class="form-group">
+            <label for= 'Matricula'> Matrícula:</label>
+            <input type= 'text' ng-model= 'aluno.matricula' name="matricula" class="form-control" ng-required="true" placeholder="Matricula" ng-minlength="12" ng-maxlength="12">
+            <div>
+              <div ng-show="alunoForm.matricula.$error.required && alunoForm.matricula.$dirty" class="alert alert-danger">
+                Por favor, preencha o campo Matricula!
+              </div>
+              <div ng-show="alunoForm.matricula.$error.minlength" class="alert alert-info">
+                Atenção, o campo Matrícula deve ter o tamanho mínimo de 12 caracteres!
+              </div>
+              <div ng-show="alunoForm.matricula.$error.maxlength" class="alert alert-info">
+                Atenção, o campo Matrícula deve ter o tamanho máximo de 12 caracteres!
+              </div>
+            </div>
+          </div>
+          <!-- CPF-->
+          <div class="form-group">
+            <label for= 'CPF'> CPF: </label>
+            <input type= 'text' ng-model= 'aluno.cpf' name="cpf" class="form-control" ng-required="true" placeholder="CPF" ng-minlength="11" ng-pattern="/^\d{3}.\d{3}.\d{3}-\d{2}$/">
+            <div>
+              <div ng-show="alunoForm.cpf.$error.required && alunoForm.cpf.$dirty" class="alert alert-danger">
+                Por favor, preencha o campo CPF!
+              </div>
+              <div ng-show="alunoForm.cpf.$error.minlength" class="alert alert-info">
+                Atenção, o campo CPF deve ter o tamanho mínimo de 11 caracteres!
+              </div>
+              <div ng-show="alunoForm.cpf.$error.pattern && alunoForm.cpf.$dirty" class="alert alert-info">
+                Atenção, o formato do campo CPF deve ser "xxx.xxx.xxx-xx"!
+              </div>
+            </div>
+          </div>
+          <!-- Nascimento-->
+          <div class="form-group">
+            <label for= 'Nascimento'> Nascimento: </label>
+            <input type= 'text' ng-model= 'aluno.nascimento' name="nascimento" class="form-control" ng-required="true" placeholder="Nascimento" ng-pattern="/^\d{4}-\d{2}-\d{2}$/">
+            <div>
+              <div ng-show="alunoForm.nascimento.$error.required && alunoForm.nascimento.$dirty" class="alert alert-danger">
+                Por favor, preencha o campo Nascimento!
+              </div>
+              <div ng-show="alunoForm.nascimento.$error.pattern && alunoForm.nascimento.$dirty" class="alert alert-info">
+                Atenção, o formato do campo nascimento deve ser "aaaa-mm-dd"!
+              </div>
+            </div>
+          </div>
+          <!-- id_endereco-->
+          <div class="form-group">
+            <label for= 'id_endereco'> Endereço: </label>
+            <input type= 'text' ng-model= 'aluno.id_endereco' name="id_endereco" class="form-control" ng-required="true" placeholder="Endereço">
+            <div>
+              <div ng-show="alunoForm.id_endereco.$error.required && alunoForm.id_endereco.$dirty" class="alert alert-danger">
+                Por favor, preencha o campo Endereço!
+              </div>
+            </div>
+          </div>
+          <!-- id_curso-->
+          <div class="form-group">
+            <label for= 'id_curso'> Curso: </label>
+            <input type= 'text' ng-model= 'aluno.id_curso' name="id_curso" name="id_curso" class="form-control" ng-required="true" placeholder="Curso">
+            <div>
+              <div ng-show="alunoForm.id_curso.$error.required && alunoForm.id_curso.$dirty" class="alert alert-danger">
+                Por favor, preencha o campo Curso!
+              </div>
+            </div>
+          </div>
+          <button ng-click="cadastrar()" class="btn btn-dark btn-lg btn-block" ng-disabled="alunoForm.$invalid">Cadastrar</button>
+        </form>
+      </main>
+      <footer>
+        <div id="ifpb">
+            <img src="Imagem/ifpb.png" />
+        </div>
+        Copyright © Todos os direitos reservados.
+      </footer>
+    </div>
+  </body>
+</html>
