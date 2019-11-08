@@ -1,6 +1,6 @@
 // Inicializar o módulo.
 let nomeApp = 'EscolaWebApp'
-let modulos = []
+let modulos = ['ngMaterial', 'ngMessages']
 let app = angular.module(nomeApp, modulos);
 
 // Estrutura básica para uma função no controlador.
@@ -17,16 +17,31 @@ let homeController = function($scope) {
 app.controller('HomeController', homeController);
 
 // Controller aluno
-let alunoController = function($scope, alunoApi) {
+let alunoController = function($scope, $mdToast, alunoApi) {
 
   $scope.aluno = {};
+  let aluno = $scope.aluno;
 
   $scope.cadastrar = function() {
-    alunoApi.cadastrar($scope.aluno)
+    alunoApi.cadastrar(aluno)
       .then(function(response) {
+        console.log("Requisição enviada e recebida com sucesso");
+        console.log(response);
       })
       .catch(function(error) {
+        let toast = $mdToast.simple()
+                    .textContent('Algum problema ocorreu no envio dos dados')
+                    .position('top right')
+                    .action('OK')
+                    .hideDelay(6000);
+                $mdToast.show(toast);
       });
+    /*
+    alunoApi.cadastrar($scope.aluno)
+      .then(function(response) {})
+      .catch(function(error) {});
+    */
+
   }
 }
 
@@ -36,22 +51,22 @@ app.controller('AlunoController', alunoController);
 let alunoFactory = function($http) {
 
   let baseUrl = "localhost:5000";
-  let path = baseUrl + "/aluno";
+  let _path = baseUrl + "/aluno";
 
   let _cadastrar = function(aluno) {
-    return $http.post(path, aluno)
+    return $http.post(_path, aluno);
   };
 
   let _atualizar = function(aluno) {
-    return $http.put(path, aluno)
+    return $http.put(_path, aluno);
   };
 
   let _buscarPorId = function(id) {
-    return $http.get(_path + "/" + encodeURI(id))
+    return $http.get(_path + "/" + encodeURI(id));
   };
 
   let _listar = function() {
-    return $http.get(_path)
+    return $http.get(baseUrl + "/alunos");
   };
 
   return {
@@ -65,14 +80,20 @@ let alunoFactory = function($http) {
 app.factory("alunoApi", alunoFactory);
 
 // Controller curso
-let cursoController = function($scope, cursoApi) {
+let cursoController = function($scope, $mdToast, cursoApi) {
     $scope.curso = {};
 
     $scope.cadastrar = function() {
       cursoApi.cadastrar($scope.curso)
         .then(function(response) {})
-        .catch(function(error) {});
-      $scope.formCurso.$setPristine();
+        .catch(function(error) {
+          let toast = $mdToast.simple()
+                      .textContent('Algum problema ocorreu no envio dos dados')
+                      .position('top right')
+                      .action('OK')
+                      .hideDelay(6000);
+                  $mdToast.show(toast);
+        });
     }
 }
 
@@ -82,7 +103,7 @@ app.controller("CursoController", cursoController);
 let cursoFactory = function($http) {
 
   let baseUrl = "localhost:5000";
-  let path = baseUrl + "/curso";
+  let _path = baseUrl + "/curso";
 
   let _cadastrar = function(curso) {
     return $http.post(_path, curso)
@@ -111,14 +132,20 @@ let cursoFactory = function($http) {
 app.factory("cursoApi", cursoFactory);
 
 // Controller disciplina
-let disciplinaController = function($scope, disciplinaApi){
+let disciplinaController = function($scope, $mdToast, disciplinaApi){
     $scope.disciplina = {};
 
     $scope.cadastrar = function() {
       disciplinaApi.cadastrar($scope.disciplina)
         .then(function(response) {})
-        .catch(function(error) {});
-      $scope.disciplinaForm.$setPristine();
+        .catch(function(error) {
+          let toast = $mdToast.simple()
+                      .textContent('Algum problema ocorreu no envio dos dados')
+                      .position('top right')
+                      .action('OK')
+                      .hideDelay(6000);
+                  $mdToast.show(toast);
+        });
     }
 }
 
@@ -128,7 +155,7 @@ app.controller("DisciplinaController", disciplinaController);
 let disciplinaFactory = function($http) {
 
   let baseUrl = "localhost:5000";
-  let path = baseUrl + "/disciplina";
+  let _path = baseUrl + "/disciplina";
 
   let _cadastrar = function(disciplina) {
     return $http.post(_path, disciplina)
@@ -157,14 +184,20 @@ let disciplinaFactory = function($http) {
 app.factory("disciplinaApi", disciplinaFactory);
 
 // Controller turma
-let turmaController = function($scope, turmaApi) {
+let turmaController = function($scope, $mdToast, turmaApi) {
     $scope.turma = {};
 
     $scope.cadastrar = function() {
       turmaApi.cadastrar($scope.turma)
         .then(function(response) {})
-        .catch(function(error) {});
-      $scope.turmaForm.$setPristine();
+        .catch(function(error) {
+          let toast = $mdToast.simple()
+                      .textContent('Algum problema ocorreu no envio dos dados')
+                      .position('top right')
+                      .action('OK')
+                      .hideDelay(6000);
+                  $mdToast.show(toast);
+        });
     }
 }
 
@@ -174,7 +207,7 @@ app.controller("TurmaController", turmaController);
 let turmaFactory = function($http) {
 
   let baseUrl = "localhost:5000";
-  let path = baseUrl + "/turma";
+  let _path = baseUrl + "/turma";
 
   let _cadastrar = function(turma) {
     return $http.post(_path, turma)
@@ -203,14 +236,20 @@ let turmaFactory = function($http) {
 app.factory("turmaApi", turmaFactory);
 
 // Controller endereço
-let enderecoController = function($scope, enderecoApi) {
+let enderecoController = function($scope, $mdToast, enderecoApi) {
     $scope.endereco = {};
 
     $scope.cadastrar = function() {
       enderecoApi.cadastrar($scope.endereco)
         .then(function(response) {})
-        .catch(function(error) {});
-      $scope.enderecoForm.$setPristine();
+        .catch(function(error) {
+          let toast = $mdToast.simple()
+                      .textContent('Algum problema ocorreu no envio dos dados')
+                      .position('top right')
+                      .action('OK')
+                      .hideDelay(6000);
+                  $mdToast.show(toast);
+        });
     }
 }
 
@@ -220,7 +259,7 @@ app.controller("EnderecoController", enderecoController);
 let enderecoFactory = function($http) {
 
   let baseUrl = "localhost:5000";
-  let path = baseUrl + "/endereco";
+  let _path = baseUrl + "/endereco";
 
   let _cadastrar = function(endereco) {
     return $http.post(_path, endereco)
@@ -248,14 +287,20 @@ let enderecoFactory = function($http) {
 
 app.factory("enderecoApi", enderecoFactory);
 // Controller escola
-let escolaController = function($scope, escolaApi) {
+let escolaController = function($scope, $mdToast, escolaApi) {
     $scope.escola = {};
 
     $scope.cadastrar = function() {
       escolaApi.cadastrar($scope.escola)
         .then(function(response) {})
-        .catch(function(error) {});
-      $scope.escolaForm.$setPristine();
+        .catch(function(error) {
+          let toast = $mdToast.simple()
+                      .textContent('Algum problema ocorreu no envio dos dados')
+                      .position('top right')
+                      .action('OK')
+                      .hideDelay(6000);
+                  $mdToast.show(toast);
+        });
     }
 }
 
@@ -265,7 +310,7 @@ app.controller("EscolaController", escolaController);
 let escolaFactory = function($http) {
 
   let baseUrl = "localhost:5000";
-  let path = baseUrl + "/escola";
+  let _path = baseUrl + "/escola";
 
   let _cadastrar = function(escola) {
     return $http.post(_path, escola)
@@ -294,14 +339,20 @@ let escolaFactory = function($http) {
 app.factory("escolaApi", escolaFactory);
 
 // Controller campus
-let campusController = function($scope, campusApi) {
+let campusController = function($scope, $mdToast, campusApi) {
     $scope.campus = {};
 
     $scope.cadastrar = function() {
       campusApi.cadastrar($scope.campus)
         .then(function(response) {})
-        .catch(function(error) {});
-      $scope.campusForm.$setPristine();
+        .catch(function(error) {
+          let toast = $mdToast.simple()
+                      .textContent('Algum problema ocorreu no envio dos dados')
+                      .position('top right')
+                      .action('OK')
+                      .hideDelay(6000);
+                  $mdToast.show(toast);
+        });
     }
 }
 
@@ -311,7 +362,7 @@ app.controller("CampusController", campusController);
 let campusFactory = function($http) {
 
   let baseUrl = "localhost:5000";
-  let path = baseUrl + "/campus";
+  let _path = baseUrl + "/campus";
 
   let _cadastrar = function(campus) {
     return $http.post(_path, campus)
@@ -340,14 +391,20 @@ let campusFactory = function($http) {
 app.factory("campusApi", campusFactory);
 
 // Controller professor
-let professorController = function($scope, professorApi) {
+let professorController = function($scope, $mdToast, professorApi) {
     $scope.professor = {};
 
     $scope.cadastrar = function() {
       professorApi.cadastrar($scope.professor)
         .then(function(response) {})
-        .catch(function(error) {});
-      $scope.professorForm.$setPristine();
+        .catch(function(error) {
+          let toast = $mdToast.simple()
+                      .textContent('Algum problema ocorreu no envio dos dados')
+                      .position('top right')
+                      .action('OK')
+                      .hideDelay(6000);
+                  $mdToast.show(toast);
+        });
     }
 }
 
@@ -357,7 +414,7 @@ app.controller("ProfessorController", professorController);
 let professorFactory = function($http) {
 
   let baseUrl = "localhost:5000";
-  let path = baseUrl + "/professor";
+  let _path = baseUrl + "/professor";
 
   let _cadastrar = function(professor) {
     return $http.post(_path, professor)
@@ -386,14 +443,20 @@ let professorFactory = function($http) {
 app.factory("professorApi", professorFactory);
 
 // Controller turno
-let turnoController = function($scope, turnoApi) {
+let turnoController = function($scope, $mdToast, turnoApi) {
     $scope.turno = {};
 
     $scope.cadastrar = function() {
       turnoApi.cadastrar($scope.turno)
         .then(function(response) {})
-        .catch(function(error) {});
-      $scope.turnoForm.$setPristine();
+        .catch(function(error) {
+          let toast = $mdToast.simple()
+                      .textContent('Algum problema ocorreu no envio dos dados')
+                      .position('top right')
+                      .action('OK')
+                      .hideDelay(6000);
+                  $mdToast.show(toast);
+        });
     }
 }
 
@@ -403,7 +466,7 @@ app.controller("TurnoController", turnoController);
 let turnoFactory = function($http) {
 
   let baseUrl = "localhost:5000";
-  let path = baseUrl + "/turno";
+  let _path = baseUrl + "/turno";
 
   let _cadastrar = function(turno) {
     return $http.post(_path, turno)
