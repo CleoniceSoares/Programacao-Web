@@ -1,0 +1,18 @@
+2019-12-03 09:07:42,273 - INFO - Cadastrando campus.
+2019-12-03 09:07:42,345 - INFO - Campi cadastrado com sucesso.
+2019-12-03 09:30:51,572 - INFO - Cadastrando endereco.
+2019-12-03 09:30:51,662 - INFO - Endereço cadastrado com sucesso.
+2019-12-03 09:34:23,831 - INFO - Cadastrando turno.
+2019-12-03 09:34:23,957 - INFO - Turno cadastrado com sucesso.
+2019-12-03 09:35:44,385 - INFO - Cadastrando professor.
+2019-12-03 09:35:44,522 - INFO - Professor cadastrado com sucesso.
+2019-12-03 09:38:58,319 - INFO - Cadastrando escola.
+2019-12-03 09:38:58,417 - INFO - Escola cadastrada com sucesso.
+2019-12-03 09:40:12,328 - INFO - Cadastrando curso.
+2019-12-03 09:40:12,424 - INFO - Curso cadastrado com sucesso.
+2019-12-03 09:42:44,168 - INFO - Cadastrando disciplina.
+2019-12-03 09:42:44,272 - INFO - Disciplina cadastrada com sucesso.
+2019-12-03 09:44:23,309 - INFO - Cadastrando turma.
+2019-12-03 09:44:23,411 - INFO - Turma cadastrada com sucesso.
+2019-12-03 10:04:00,896 - INFO - Listando curso.
+2019-12-03 10:04:00,897 - INFO - Curso listado com sucesso.
