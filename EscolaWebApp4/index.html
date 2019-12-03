@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html ng-app="EscolaWebApp">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Página Inicial</title>
+
+    <!-- Estilo -->
+    <link rel="stylesheet" type="text/css" href="CSS/index.css">
+    <link rel="stylesheet" type="text/css" href="CSS/menu.css">
+
+    <!-- AngularJs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-messages.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.js"></script>
+    <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+
+    <!-- Angular Material -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
+
+    <!-- Moments -->
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- EscolaWebApp - Aplicando Angular-->
+    <script src="JS/app.js" type="text/javascript"></script>
+
+    <!--Controllers-->
+    <script src="JS/Controller/HomeController.js" type="text/javascript"></script>
+    <script src="JS/Controller/AlunoController.js" type="text/javascript"></script>
+    <script src="JS/Controller/CampusController.js" type="text/javascript"></script>
+    <script src="JS/Controller/CursoController.js" type="text/javascript"></script>
+    <script src="JS/Controller/DisciplinaController.js" type="text/javascript"></script>
+    <script src="JS/Controller/EnderecoController.js" type="text/javascript"></script>
+    <script src="JS/Controller/EscolaController.js" type="text/javascript"></script>
+    <script src="JS/Controller/ProfessorController.js" type="text/javascript"></script>
+    <script src="JS/Controller/TurmaController.js" type="text/javascript"></script>
+    <script src="JS/Controller/TurnoController.js" type="text/javascript"></script>
+
+    <!--Factorys-->
+    <script src="JS/Factory/AlunoApi.js" type="text/javascript"></script>
+    <script src="JS/Factory/CampusApi.js" type="text/javascript"></script>
+    <script src="JS/Factory/CursoApi.js" type="text/javascript"></script>
+    <script src="JS/Factory/DisciplinaApi.js" type="text/javascript"></script>
+    <script src="JS/Factory/EnderecoApi.js" type="text/javascript"></script>
+    <script src="JS/Factory/EscolaApi.js" type="text/javascript"></script>
+    <script src="JS/Factory/ProfessorApi.js" type="text/javascript"></script>
+    <script src="JS/Factory/TurmaApi.js" type="text/javascript"></script>
+    <script src="JS/Factory/TurnoApi.js" type="text/javascript"></script>
+
+    <!--Router-->
+    <script src="JS/Router/router.js" type="text/javascript"></script>
+
+  </head>
+
+  <body>
+
+    <div class="meu-container">
+      <header>
+        <!-- Logo -->
+        <a href="home.html">
+          <div id="logo">
+              <img src="Imagem/logo.png" />
+          </div>
+        </a>
+        <nav>
+          <ul class="navigation">
+            <li><a href="#/turno"><b>Turno</b></a></li>
+            <li><a href="#/turma"><b>Turma</b></a></li>
+            <li><a href="#/professor"><b>Professor</b></a></li>
+            <li><a href="#/escola"><b>Escola</b></a></li>
+            <li><a href="#/endereco"><b>Endereço</b></a></li>
+            <li><a href="#/disciplina"><b>Disciplina</b></a></li>
+            <li><a href="#/curso"><b>Curso</b></a></li>
+            <li><a href="#/campus"><b>Campus</b></a></li>
+            <li><a href="#/aluno"><b>Aluno</b></a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <ng-view></ng-view>
+      </main>
+
+      <footer>
+        <div id="ifpb">
+            <img src="Imagem/ifpb.png" />
+        </div>
+        Copyright © Todos os direitos reservados.
+      </footer>
+
+    </div>
+
+  </body>
+
+</html>

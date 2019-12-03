@@ -1,0 +1,84 @@
+<p>
+  <b> <u>Cadastrar Aluno</u> </b>
+</p>
+<form name="alunoForm">
+  <!-- Nome-->
+  <div class="form-group">
+    <label for= 'Nome'> Nome:</label>
+    <input type= 'text' ng-model="aluno.nome" name="nome" class="form-control" ng-required="true" placeholder="Nome" ng-minlength="3" ng-maxlength="25">
+    <div>
+      <div ng-show="alunoForm.nome.$error.required && alunoForm.nome.$dirty" class="alert alert-danger">
+        Por favor, preencha o campo Nome!
+      </div>
+      <div ng-show="alunoForm.nome.$error.minlength" class="alert alert-info">
+        Atenção, o campo Nome deve ter o tamanho mínimo de 3 caracteres!
+      </div>
+      <div ng-show="alunoForm.nome.$error.maxlength" class="alert alert-info">
+        Atenção, o campo Nome deve ter o tamanho máximo de 25 caracteres!
+      </div>
+    </div>
+  </div>
+  <!-- Matricula-->
+  <div class="form-group">
+    <label for= 'Matricula'> Matrícula:</label>
+    <input type= 'text' ng-model= 'aluno.matricula' name="matricula" class="form-control" ng-required="true" placeholder="Matricula" ng-minlength="12" ng-maxlength="12">
+    <div>
+      <div ng-show="alunoForm.matricula.$error.required && alunoForm.matricula.$dirty" class="alert alert-danger">
+        Por favor, preencha o campo Matricula!
+      </div>
+      <div ng-show="alunoForm.matricula.$error.minlength" class="alert alert-info">
+        Atenção, o campo Matrícula deve ter o tamanho mínimo de 12 caracteres!
+      </div>
+      <div ng-show="alunoForm.matricula.$error.maxlength" class="alert alert-info">
+        Atenção, o campo Matrícula deve ter o tamanho máximo de 12 caracteres!
+      </div>
+    </div>
+  </div>
+  <!-- CPF-->
+  <div class="form-group">
+    <label for= 'CPF'> CPF: </label>
+    <input type= 'text' ng-model= 'aluno.cpf' name="cpf" class="form-control" ng-required="true" placeholder="CPF" ng-minlength="11" ng-maxlength="11">
+    <div>
+      <div ng-show="alunoForm.cpf.$error.required && alunoForm.cpf.$dirty" class="alert alert-danger">
+        Por favor, preencha o campo CPF!
+      </div>
+      <div ng-show="alunoForm.cpf.$error.minlength" class="alert alert-info">
+        Atenção, o campo CPF deve ter o tamanho mínimo de 11 caracteres!
+      </div>
+      <div ng-show="alunoForm.cpf.$error.maxlength" class="alert alert-info">
+        Atenção, o campo CPF deve ter o tamanho máximo de 11 caracteres!
+      </div>
+    </div>
+  </div>
+  <!-- Nascimento-->
+  <div class="form-group">
+    <label for= 'Nascimento'> Nascimento: </label>
+    <input type= 'date' ng-model= 'aluno.nascimento' name="nascimento" class="form-control" ng-required="true" placeholder="Nascimento">
+    <div>
+      <div ng-show="alunoForm.nascimento.$error.required && alunoForm.nascimento.$dirty" class="alert alert-danger">
+        Por favor, preencha o campo Nascimento!
+      </div>
+    </div>
+  </div>
+  <!-- id_endereco-->
+  <div class="form-group">
+    <label for= 'id_endereco'> Endereço: </label>
+    <input type= 'text' ng-model= 'aluno.id_endereco' name="id_endereco" class="form-control" ng-required="true" placeholder="Endereço">
+    <div>
+      <div ng-show="alunoForm.id_endereco.$error.required && alunoForm.id_endereco.$dirty" class="alert alert-danger">
+        Por favor, preencha o campo Endereço!
+      </div>
+    </div>
+  </div>
+  <!-- id_curso-->
+  <div class="form-group">
+    <label for= 'id_curso'> Curso: </label>
+    <input type= 'text' ng-model= 'aluno.id_curso' name="id_curso" name="id_curso" class="form-control" ng-required="true" placeholder="Curso">
+    <div>
+      <div ng-show="alunoForm.id_curso.$error.required && alunoForm.id_curso.$dirty" class="alert alert-danger">
+        Por favor, preencha o campo Curso!
+      </div>
+    </div>
+  </div>
+  <button ng-click="cadastrar()" class="btn btn-dark btn-lg btn-block" ng-disabled="alunoForm.$invalid">Cadastrar</button>
+  </form>

@@ -1,0 +1,39 @@
+<p>
+  <b> <u>Cadastrar Escola</u> </b>
+</p>
+<form name="escolaForm">
+  <div class="form-group">
+    <label for= 'Nome'> Nome:</label>
+    <input type= 'text' ng-model="escola.nome" name= 'nome' class="form-control" ng-required="true" placeholder="Nome" ng-minlength="3" ng-maxlength="25">
+    <div>
+      <div ng-show="escolaForm.nome.$error.required && escolaForm.nome.$dirty" class="alert alert-danger">
+        Por favor, preencha o campo Nome!
+      </div>
+      <div ng-show="escolaForm.nome.$error.minlength" class="alert alert-info">
+        Atenção, o campo Nome deve ter o tamanho mínimo de 3 caracteres!
+      </div>
+      <div ng-show="escolaForm.nome.$error.maxlength" class="alert alert-info">
+        Atenção, o campo Nome deve ter o tamanho máximo de 25 caracteres!
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for= 'id_endereco'> Endereço:</label>
+    <input type= 'text' ng-model= 'escola.id_endereco' name="id_endereco" class="form-control" ng-required="true" placeholder="Endereço">
+    <div>
+      <div ng-show="escolaForm.id_endereco.$error.required && escolaForm.id_endereco.$dirty" class="alert alert-danger">
+        Por favor, preencha o campo Endereço!
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for= 'id_campus'> Campus:</label>
+    <input type= 'text' ng-model="escola.id_campus" name= 'id_campus' class="form-control" ng-required="true" placeholder="Campus">
+    <div>
+      <div ng-show="escolaForm.id_campus.$error.required && escolaForm.id_endereco.$dirty" class="alert alert-danger">
+        Por favor, preencha o campo Campus!
+      </div>
+    </div>
+  </div>
+  <button ng-click="cadastrar()" class="btn btn-dark btn-lg btn-block" ng-disabled="escolaForm.$invalid">Cadastrar</button>
+</form>
