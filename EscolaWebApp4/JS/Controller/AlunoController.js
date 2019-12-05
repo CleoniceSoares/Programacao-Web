@@ -5,7 +5,7 @@ let alunoController = function($scope, $mdToast, alunoApi) {
 
   $scope.cadastrar = function() {
 
-    let aluno = $scope.aluno;
+    let aluno = angular.copy($scope.aluno);
 
     // Converter formato da data: brazilian -> american.
     let data = moment(aluno.nascimento, "DD/MM/YYYY");
