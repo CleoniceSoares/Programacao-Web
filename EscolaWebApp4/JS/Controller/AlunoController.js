@@ -1,10 +1,11 @@
 // Controller aluno
-let alunoController = function($scope, $mdToast, alunoApi) {
+let alunoController = function($scope, $mdToast, $state, alunoApi) {
 
   $scope.aluno = {};
 
   $scope.cadastrar = function() {
 
+    // Criar uma cópia do aluno do $scope.
     let aluno = angular.copy($scope.aluno);
 
     // Converter formato da data: brazilian -> american.
@@ -28,6 +29,10 @@ let alunoController = function($scope, $mdToast, alunoApi) {
         $scope.alunoForm.$setPristine();
         $scope.alunoForm.$setUntouched();
         $scope.alunoForm.$setValidity();
+
+        // Redirecionamento de página.
+        $state.transitionTo('alunos', {reload: true, inherit: false, notify: true});
+
       })
       .catch(function(error) {
         console.log(error)

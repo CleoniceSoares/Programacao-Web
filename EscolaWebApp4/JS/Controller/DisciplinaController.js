@@ -1,6 +1,9 @@
 // Controller disciplina
-let disciplinaController = function($scope, $mdToast, disciplinaApi){
+let disciplinaController = function($scope, $mdToast, $state, disciplinaApi){
     $scope.disciplina = {};
+
+    // Criar uma cópia da disciplina do $scope.
+    let disciplina = angular.copy($scope.disciplina);
 
     $scope.cadastrar = function() {
       disciplinaApi.cadastrar($scope.disciplina)
@@ -20,6 +23,10 @@ let disciplinaController = function($scope, $mdToast, disciplinaApi){
           $scope.disciplinaForm.$setPristine();
           $scope.disciplinaForm.$setUntouched();
           $scope.disciplinaForm.$setValidity();
+
+          // Redirecionamento de página.
+          $state.transitionTo('disciplinas', {reload: true, inherit: false, notify: true});
+
         })
         .catch(function(error) {
           console.log(error)

@@ -1,0 +1,47 @@
+<!-- Endereço - Formulário -->
+<form name="enderecoForm">
+  <div class="form-group">
+    <!-- Nome -->
+    <label for='nome'> Nome: </label>
+    <input type='text' name='nome' class="form-control" ng-model="endereco.nome" ng-minlength="3" ng-maxlength="25">
+    <div>
+      <div ng-show="enderecoForm.nome.$error.minlength && enderecoForm.nome.$dirty" class="alert alert-danger">
+        Por favor, o Nome não tem o tamanho mínimo válido!
+      </div>
+      <div ng-show="enderecoForm.nome.$error.maxlength && enderecoForm.nome.$dirty" class="alert alert-danger">
+        Por favor, o Nome não tem o tamanho máximo válido!
+      </div>
+    </div>
+  </div>
+
+  <!-- Botão -->
+  <button ng-click="listar()" class="btn btn-dark btn-lg btn-block">
+    Listar
+  </button>
+</form>
+
+<!-- Tabela de Endereços -->
+<div>
+  <table class="table table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Código</th>
+        <th scope="col">Logradouro</th>
+        <th scope="col">Complemento</th>
+        <th scope="col">Bairro</th>
+        <th scope="col">CEP</th>
+        <th scope="col">Número</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="endereco in enderecos">
+        <td scope="row">{{endereco.id}}</td>
+        <td scope="row">{{endereco.logradouro}}</td>
+        <td scope="row">{{endereco.complemento}}</td>
+        <td scope="row">{{endereco.bairro}}</td>
+        <td scope="row">{{endereco.cep}}</td>
+        <td scope="row">{{endereco.numero}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

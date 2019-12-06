@@ -1,6 +1,9 @@
 // Controller curso
-let cursoController = function($scope, $mdToast, cursoApi) {
+let cursoController = function($scope, $mdToast, $state, cursoApi) {
     $scope.curso = {};
+
+    // Criar uma cópia do curso do $scope.
+    let curso = angular.copy($scope.curso);
 
     $scope.cadastrar = function() {
       cursoApi.cadastrar($scope.curso)
@@ -20,6 +23,10 @@ let cursoController = function($scope, $mdToast, cursoApi) {
           $scope.cursoForm.$setPristine();
           $scope.cursoForm.$setUntouched();
           $scope.cursoForm.$setValidity();
+
+          // Redirecionamento de página.
+          $state.transitionTo('cursos', {reload: true, inherit: false, notify: true});
+
         })
         .catch(function(error) {
           console.log(error)

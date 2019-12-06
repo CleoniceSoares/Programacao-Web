@@ -1,0 +1,73 @@
+
+<script src="JS/Controller/LtCampusController.js" type="text/javascript"></script>
+<script src="JS/Controller/LtCursosController.js" type="text/javascript"></script>
+<script src="JS/Controller/LtDisciplinasController.js" type="text/javascript"></script>
+<script src="JS/Controller/LtEnderecosController.js" type="text/javascript"></script>
+<script src="JS/Controller/LtEscolasController.js" type="text/javascript"></script>
+<script src="JS/Controller/LtProfessoresController.js" type="text/javascript"></script>
+<script src="JS/Controller/LtTurmasController.js" type="text/javascript"></script>
+<script src="JS/Controller/LtTurnosController.js" type="text/javascript"></script>
+
+// listar alunos
+.state('alunos', {
+  url: '/alunos',
+  title: 'EscolaApp - Listar Alunos',
+  templateUrl: 'listar_alunos.html',
+  controller: 'LtAlunosController'
+})
+// listar campus
+.state('campus', {
+  url: '/campus',
+  title: 'EscolaApp - Listar campus',
+  templateUrl: 'listar_campus.html',
+  controller: 'LtCampusController'
+})
+// listar cursos
+.state('cursos', {
+  url: '/cursos',
+  title: 'EscolaApp - Listar Cursos',
+  templateUrl: 'listar_cursos.html',
+  controller: 'LtCursosController'
+})
+// listar disciplinas
+.state('disciplinas', {
+  url: '/disciplinas',
+  title: 'EscolaApp - Listar Disciplinas',
+  templateUrl: 'listar_disciplinas.html',
+  controller: 'LtDisciplinasController'
+})
+// listar endereços
+.state('enderecos', {
+  url: '/enderecos',
+  title: 'EscolaApp - Listar Enderecos',
+  templateUrl: 'listar_enderecos.html',
+  controller: 'LtEnderecosController'
+})
+// listar escolas
+.state('escolas', {
+  url: '/escolas',
+  title: 'EscolaApp - Listar Escolas',
+  templateUrl: 'listar_escolas.html',
+  controller: 'LtEscolasController'
+})
+// listar professores
+.state('professores', {
+  url: '/professores',
+  title: 'EscolaApp - Listar Professores',
+  templateUrl: 'listar_professores.html',
+  controller: 'LtProfessoresController'
+})
+// listar turmas
+.state('turmas', {
+  url: '/turmas',
+  title: 'EscolaApp - Listar Turmas',
+  templateUrl: 'listar_turmas.html',
+  controller: 'LtTurmasController'
+})
+// listar turnos
+.state('turnos', {
+  url: '/turnos',
+  title: 'EscolaApp - Listar Turnos',
+  templateUrl: 'listar_turnos.html',
+  controller: 'LtTurnosController'
+})

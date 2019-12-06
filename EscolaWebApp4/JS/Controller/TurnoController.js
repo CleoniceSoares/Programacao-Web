@@ -1,6 +1,9 @@
 // Controller turno
-let turnoController = function($scope, $mdToast, turnoApi) {
+let turnoController = function($scope, $mdToast, $state, turnoApi) {
     $scope.turno = {};
+
+    // Criar uma cópia do turno do $scope.
+    let turno = angular.copy($scope.turno);
 
     $scope.cadastrar = function() {
       turnoApi.cadastrar($scope.turno)
@@ -20,6 +23,10 @@ let turnoController = function($scope, $mdToast, turnoApi) {
           $scope.turnoForm.$setPristine();
           $scope.turnoForm.$setUntouched();
           $scope.turnoForm.$setValidity();
+
+          // Redirecionamento de página.
+          $state.transitionTo('turnos', {reload: true, inherit: false, notify: true});
+
         })
         .catch(function(error) {
           console.log(error)

@@ -1,6 +1,9 @@
 // Controller turma
-let turmaController = function($scope, $mdToast, turmaApi) {
+let turmaController = function($scope, $mdToast, $state, turmaApi) {
     $scope.turma = {};
+
+    // Criar uma cópia da turma do $scope.
+    let turma = angular.copy($scope.turma);
 
     $scope.cadastrar = function() {
       turmaApi.cadastrar($scope.turma)
@@ -20,6 +23,10 @@ let turmaController = function($scope, $mdToast, turmaApi) {
         $scope.turmaForm.$setPristine();
         $scope.turmaForm.$setUntouched();
         $scope.turmaForm.$setValidity();
+
+        // Redirecionamento de página.
+        $state.transitionTo('turmas', {reload: true, inherit: false, notify: true});
+
       })
         .catch(function(error) {
           console.log(error)

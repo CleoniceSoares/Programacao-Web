@@ -1,4 +1,4 @@
-// Inicializar o módulo.
-let nomeApp = 'EscolaWebApp'
-let modulos = ['ngMaterial', 'ngMessages', 'ngRoute', 'ngAnimate', 'ngAria']
-let app = angular.module(nomeApp, modulos);
+// Inicializar o módulo
+var nomeApp = 'EscolaWebApp';
+var modulos = ['ngMaterial', 'ngMessages', 'ngRoute', 'ngAnimate', 'ngAria', 'ui.router'];
+var app = angular.module(nomeApp, modulos);

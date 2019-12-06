@@ -1,6 +1,9 @@
 // Controller escola
-let escolaController = function($scope, $mdToast, escolaApi) {
+let escolaController = function($scope, $mdToast, $state, escolaApi) {
     $scope.escola = {};
+
+    // Criar uma cópia da escola do $scope.
+    let escola = angular.copy($scope.escola);
 
     $scope.cadastrar = function() {
       escolaApi.cadastrar($scope.escola)
@@ -20,6 +23,10 @@ let escolaController = function($scope, $mdToast, escolaApi) {
           $scope.escolaForm.$setPristine();
           $scope.escolaForm.$setUntouched();
           $scope.escolaForm.$setValidity();
+
+          // Redirecionamento de página.
+          $state.transitionTo('escolas', {reload: true, inherit: false, notify: true});
+
         })
         .catch(function(error) {
           console.log(error)

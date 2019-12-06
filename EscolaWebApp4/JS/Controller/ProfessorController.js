@@ -1,6 +1,9 @@
 // Controller professor
-let professorController = function($scope, $mdToast, professorApi) {
+let professorController = function($scope, $mdToast, $state, professorApi) {
     $scope.professor = {};
+
+    // Criar uma cópia do professor do $scope.
+    let professor = angular.copy($scope.professor);
 
     $scope.cadastrar = function() {
       professorApi.cadastrar($scope.professor)
@@ -20,6 +23,10 @@ let professorController = function($scope, $mdToast, professorApi) {
           $scope.professorForm.$setPristine();
           $scope.professorForm.$setUntouched();
           $scope.professorForm.$setValidity();
+
+          // Redirecionamento de página.
+          $state.transitionTo('professores', {reload: true, inherit: false, notify: true});
+
         })
         .catch(function(error) {
           console.log(error)

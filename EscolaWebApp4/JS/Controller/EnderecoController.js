@@ -1,6 +1,9 @@
 // Controller endereço
-let enderecoController = function($scope, $mdToast, enderecoApi) {
+let enderecoController = function($scope, $mdToast, $state, enderecoApi) {
     $scope.endereco = {};
+
+    // Criar uma cópia do endereço do $scope.
+    let endereco = angular.copy($scope.endereco);
 
     $scope.cadastrar = function() {
       enderecoApi.cadastrar($scope.endereco)
@@ -20,6 +23,10 @@ let enderecoController = function($scope, $mdToast, enderecoApi) {
           $scope.enderecoForm.$setPristine();
           $scope.enderecoForm.$setUntouched();
           $scope.enderecoForm.$setValidity();
+
+          // Redirecionamento de página.
+          $state.transitionTo('enderecos', {reload: true, inherit: false, notify: true});
+
         })
         .catch(function(error) {
           console.log(error)

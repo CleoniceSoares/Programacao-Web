@@ -1,6 +1,9 @@
 // Controller campus
-let campusController = function($scope, $mdToast, campusApi) {
+let campusController = function($scope, $mdToast, $state, campusApi) {
     $scope.campus = {};
+
+    // Criar uma cópia do campus do $scope.
+    let campus= angular.copy($scope.campus);
 
     $scope.cadastrar = function() {
       campusApi.cadastrar($scope.campus)
@@ -20,6 +23,10 @@ let campusController = function($scope, $mdToast, campusApi) {
           $scope.campusForm.$setPristine();
           $scope.campusForm.$setUntouched();
           $scope.campusForm.$setValidity();
+
+          // Redirecionamento de página.
+          $state.transitionTo('campus', {reload: true, inherit: false, notify: true});
+
         })
         .catch(function(error) {
           console.log(error)
