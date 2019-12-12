@@ -506,7 +506,7 @@ def getCampi():
         conn.close()
     except(sqlite3.Error):
          logger.error("Aconteceu um erro.")
-    logger.info("Campus listados com sucesso.")
+    logger.info("Campi listados com sucesso.")
     return jsonify(campus)
 
 # listar campi pelo id
