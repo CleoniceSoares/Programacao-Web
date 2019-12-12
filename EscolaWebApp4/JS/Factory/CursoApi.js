@@ -17,7 +17,7 @@ let cursoFactory = function($http) {
   };
 
   let _listar = function() {
-    return $http.get(_path)
+    return $http.get(baseUrl + "/cursos")
   };
 
   return {

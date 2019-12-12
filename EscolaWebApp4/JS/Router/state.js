@@ -84,6 +84,61 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         title: 'EscolaApp - Listar Alunos',
         templateUrl: 'listar_alunos.html',
         controller: 'LtAlunosController'
+      })
+      .state('campi', {
+        url: '/campi',
+        title: 'EscolaApp - Listar campi',
+        templateUrl: 'listar_campi.html',
+        controller: 'LtCampiController'
+      })
+      // listar cursos
+      .state('cursos', {
+        url: '/cursos',
+        title: 'EscolaApp - Listar Cursos',
+        templateUrl: 'listar_cursos.html',
+        controller: 'LtCursosController'
+      })
+      // listar disciplinas
+      .state('disciplinas', {
+        url: '/disciplinas',
+        title: 'EscolaApp - Listar Disciplinas',
+        templateUrl: 'listar_disciplinas.html',
+        controller: 'LtDisciplinasController'
+      })
+      // listar endereços
+      .state('enderecos', {
+        url: '/enderecos',
+        title: 'EscolaApp - Listar Enderecos',
+        templateUrl: 'listar_enderecos.html',
+        controller: 'LtEnderecosController'
+      })
+      // listar escolas
+      .state('escolas', {
+        url: '/escolas',
+        title: 'EscolaApp - Listar Escolas',
+        templateUrl: 'listar_escolas.html',
+        controller: 'LtEscolasController'
+      })
+      // listar professores
+      .state('professores', {
+        url: '/professores',
+        title: 'EscolaApp - Listar Professores',
+        templateUrl: 'listar_professores.html',
+        controller: 'LtProfessoresController'
+      })
+      // listar turmas
+      .state('turmas', {
+        url: '/turmas',
+        title: 'EscolaApp - Listar Turmas',
+        templateUrl: 'listar_turmas.html',
+        controller: 'LtTurmasController'
+      })
+      // listar turnos
+      .state('turnos', {
+        url: '/turnos',
+        title: 'EscolaApp - Listar Turnos',
+        templateUrl: 'listar_turnos.html',
+        controller: 'LtTurnosController'
       });
   })
   //take all whitespace out of string

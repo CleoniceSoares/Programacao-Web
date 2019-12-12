@@ -17,7 +17,7 @@ let turmaFactory = function($http) {
   };
 
   let _listar = function() {
-    return $http.get(_path)
+    return $http.get(baseUrl + "/turmas")
   };
 
   return {

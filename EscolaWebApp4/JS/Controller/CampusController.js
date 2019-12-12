@@ -25,7 +25,7 @@ let campusController = function($scope, $mdToast, $state, campusApi) {
           $scope.campusForm.$setValidity();
 
           // Redirecionamento de página.
-          $state.transitionTo('campus', {reload: true, inherit: false, notify: true});
+          $state.transitionTo('campi', {reload: true, inherit: false, notify: true});
 
         })
         .catch(function(error) {

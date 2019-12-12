@@ -1,12 +1,12 @@
-let ltEnderecosController = function($scope, $mdToast, enderecoApi) {
+let ltCampiController = function($scope, $mdToast, campusApi) {
 
-  $scope.enderecos = [];
+  $scope.campus = [];
 
   $scope.listar = function() {
     console.log("Listando")
-    enderecoApi.listar()
+    campusApi.listar()
       .then(function(response) {
-        $scope.enderecos = response.data;
+        $scope.campus = response.data;
       })
       .catch(function(error) {
 
@@ -15,9 +15,9 @@ let ltEnderecosController = function($scope, $mdToast, enderecoApi) {
 
   $scope.pesquisar = function(nome) {
     if (nome.length >= 3) {
-      enderecoApi.buscarPorNome(nome)
+      campusApi.buscarPorNome(nome)
         .then(function(response) {
-          $scope.enderecos = response.data;
+          $scope.campus = response.data;
         })
         .catch(function(error) {
 
@@ -26,10 +26,10 @@ let ltEnderecosController = function($scope, $mdToast, enderecoApi) {
   };
 
   $scope.limparBusca = function() {
-    $scope.logradouro = "";
-    $scope.enderecos = [];
+    $scope.sigla = "";
+    $scope.campus = [];
   };
 
 }
 
-app.controller('LtEnderecosController', ltEnderecosController);
+app.controller('LtCampiController', ltCampiController);

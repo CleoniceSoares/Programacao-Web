@@ -1,0 +1,39 @@
+<!-- Turno - Formulário -->
+<form name="turnoForm">
+  <div class="form-group">
+    <!-- Nome -->
+    <label for='nome'> Nome: </label>
+    <input type='text' name='nome' class="form-control" ng-model="turno.nome" ng-minlength="3" ng-maxlength="25">
+    <div>
+      <div ng-show="turnoForm.nome.$error.minlength && turnoForm.nome.$dirty" class="alert alert-danger">
+        Por favor, o Nome não tem o tamanho mínimo válido!
+      </div>
+      <div ng-show="turnoForm.nome.$error.maxlength && turnoForm.nome.$dirty" class="alert alert-danger">
+        Por favor, o Nome não tem o tamanho máximo válido!
+      </div>
+    </div>
+  </div>
+
+  <!-- Botão -->
+  <button ng-click="listar()" class="btn btn-dark btn-lg btn-block">
+    Listar
+  </button>
+</form>
+
+<!-- Tabela de Turnos -->
+<div>
+  <table class="table table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Código</th>
+        <th scope="col">Nome</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="turno in turnos">
+        <td scope="row">{{turno.id}}</td>
+        <td scope="row">{{turno.nome}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

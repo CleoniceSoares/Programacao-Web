@@ -17,7 +17,7 @@ let disciplinaFactory = function($http) {
   };
 
   let _listar = function() {
-    return $http.get(_path)
+    return $http.get(baseUrl + "/disciplinas")
   };
 
   return {

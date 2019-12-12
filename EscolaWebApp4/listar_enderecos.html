@@ -1,15 +1,15 @@
 <!-- Endereço - Formulário -->
 <form name="enderecoForm">
   <div class="form-group">
-    <!-- Nome -->
-    <label for='nome'> Nome: </label>
-    <input type='text' name='nome' class="form-control" ng-model="endereco.nome" ng-minlength="3" ng-maxlength="25">
+    <!-- Logradouro -->
+    <label for='logradouro'> Logradouro: </label>
+    <input type='text' name='logradouro' class="form-control" ng-model="endereco.logradouro" ng-minlength="3" ng-maxlength="25">
     <div>
-      <div ng-show="enderecoForm.nome.$error.minlength && enderecoForm.nome.$dirty" class="alert alert-danger">
-        Por favor, o Nome não tem o tamanho mínimo válido!
+      <div ng-show="enderecoForm.logradouro.$error.minlength && enderecoForm.logradouro.$dirty" class="alert alert-danger">
+        Por favor, o Logradouro não tem o tamanho mínimo válido!
       </div>
-      <div ng-show="enderecoForm.nome.$error.maxlength && enderecoForm.nome.$dirty" class="alert alert-danger">
-        Por favor, o Nome não tem o tamanho máximo válido!
+      <div ng-show="enderecoForm.logradouro.$error.maxlength && enderecoForm.logradouro.$dirty" class="alert alert-danger">
+        Por favor, o Logradouro não tem o tamanho máximo válido!
       </div>
     </div>
   </div>
